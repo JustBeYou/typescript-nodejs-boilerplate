@@ -4,28 +4,33 @@ services:
   db:
     image: mongo:latest
     env_file:
-      - ./.env.dev
+      - ./.env.prod
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
       MONGO_INITDB_DATABASE: ${DB_NAME}
-    ports:
-      - 27017:27017
     volumes:
       - db_data_container:/data/db
   
   web:
     build:
       context: ./web
-      dockerfile: ./Dockerfile.dev
+      dockerfile: ./Dockerfile.prod
     env_file:
-      - ./.env.dev
-    volumes:
-      - ./web:/usr/src/app
+      - ./.env.prod
     ports:
       - 3000:3000
     depends_on:
       - db
-    command: npm run start:dev
+    command: npm run start:prod
+  
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
+
 volumes:
   db_data_container:
