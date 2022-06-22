@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "module": "commonjs",
+        "outDir": "dist",
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "es2020",
+        "moduleResolution": "node",
+        "paths": {
+            "@app/*": ["src/*"],
+            "@models/*": ["src/models/*"],
+            "@controllers/*": ["src/controllers/*"],
+            "@services/*": ["src/services/*"],
+            "@utils/*": ["src/utils/*"],
+            "@sockets/*": ["src/sockets/*"],
+            "@spec/*": ["spec/*"],
+            "@data/*": ["data/*"]
+        },
+        "typeRoots": ["src/types", "node_modules/@types"]
+    },
+    "include": ["src/**/*.ts", "spec/**/*.spec.ts", "src/types", "data/**/*.ts"],
+    "exclude": ["src/public/"]
+}

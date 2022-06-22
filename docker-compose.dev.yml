@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  db:
+    image: mongo:latest
+    env_file:
+      - ./.env.dev
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+    ports:
+      - 27017:27017
+    volumes:
+      - db_data_container:/data/db
+  
+  web:
+    build:
+      context: ./web
+      dockerfile: ./Dockerfile.dev
+    env_file:
+      - ./.env.dev
+    volumes:
+      - ./web:/usr/src/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    command: npm run start:dev
+volumes:
+  db_data_container:

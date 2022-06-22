@@ -1,0 +1,12 @@
+FROM node:16.15.1-alpine3.16
+
+WORKDIR /usr/src/app
+COPY entry.dev.sh .
+VOLUME /usr/src/app
+RUN mkdir -p /data/images
+RUN chown -R node:node /data/images
+VOLUME /data/images
+
+EXPOSE 3000
+USER node
+ENTRYPOINT [ "./entry.dev.sh" ]
