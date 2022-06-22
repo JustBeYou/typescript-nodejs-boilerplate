@@ -29,8 +29,8 @@ export const UserSchema = new Schema({
     role: {
         type: String,
         enum: Object.values(UserRoles),
-        default: UserRole.DEFAULT, 
-        required: true
+        default: UserRole.DEFAULT,
+        required: true,
     },
     profile: {
         type: ProfileSchema,

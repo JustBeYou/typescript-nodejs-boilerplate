@@ -24,6 +24,6 @@ export function setupDatabase(): void {
             })
         }
 
-        console.log('Database setup done.');
+        console.log('Database setup done.')
     })
 }

@@ -3,7 +3,7 @@ import { UserDocument, UserODM } from '@app/models/odms/user'
 let counter = 0
 const defaultPassword = '1234'
 
-export function fakeUser(name?: string, image?: string): Promise<UserDocument> {
+export function fakeUser(name?: string): Promise<UserDocument> {
     const email = name !== undefined ? `${name}@fake.com` : undefined
     return UserODM.create({
         username: name || `USERUM${counter++}`,

@@ -1,4 +1,4 @@
-import { Router, Request } from 'express'
+import { Router } from 'express'
 import 'express-async-errors'
 
 import { authenticated } from 'src/auth'
